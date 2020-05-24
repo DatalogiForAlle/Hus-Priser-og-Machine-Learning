@@ -66,4 +66,14 @@ def CalculateAccuracy(testdata, labels, model):
         return np.sqrt(mse)
 
     
-    
+from sklearn.model_selection import cross_val_score
+def cross_validate(model, prepared, labels):
+    scores = cross_val_score(model, prepared, labels,
+                             scoring="neg_mean_squared_error", cv = 10)
+    scores = np.sqrt(-scores)
+    return scores
+
+def display_scores(scores):
+     print("Scores:", scores)
+     print("Mean:", scores.mean())
+     print("Standard deviation:", scores.std())
