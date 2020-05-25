@@ -19,7 +19,10 @@ def fetch_housing_data():
 
 def load_housing_data():
     csv_path = os.path.join(HOUSING_PATH, "housing.csv")
-    return pd.read_csv(csv_path)
+    housing = pd.read_csv(csv_path)
+    housing = housing.drop("ocean_proximity", axis = 1)
+    
+    return housing
 
 def split_train_test(data, test_ratio):
     shuffled_indices = np.random.permutation(len(data))
