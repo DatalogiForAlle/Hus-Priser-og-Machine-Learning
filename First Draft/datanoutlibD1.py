@@ -5,6 +5,8 @@ import pandas as pd
 from zlib import crc32
 from sklearn.base import BaseEstimator, TransformerMixin
 import numpy as np
+
+# TODO: Perhaps fetch from our own Git-repository instead?
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml2/master/"
 HOUSING_PATH = os.path.join("datasets", "housing")
 HOUSING_URL = DOWNLOAD_ROOT + "datasets/housing/housing.tgz"
