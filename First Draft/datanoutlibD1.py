@@ -1,6 +1,6 @@
 import os
 import tarfile
-import urllib
+import urllib.request
 import pandas as pd
 from zlib import crc32
 from sklearn.base import BaseEstimator, TransformerMixin
@@ -8,6 +8,7 @@ import numpy as np
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml2/master/"
 HOUSING_PATH = os.path.join("datasets", "housing")
 HOUSING_URL = DOWNLOAD_ROOT + "datasets/housing/housing.tgz"
+
 def fetch_housing_data():
     os.makedirs(HOUSING_PATH, exist_ok=True)
     tgz_path = os.path.join(HOUSING_PATH, "housing.tgz")
@@ -21,8 +22,11 @@ def load_housing_data():
     csv_path = os.path.join(HOUSING_PATH, "housing.csv")
     housing = pd.read_csv(csv_path)
     housing = housing.drop("ocean_proximity", axis = 1)
-    
     return housing
+
+def download_housing_data():
+    fetch_housing_data()
+    return load_housing_data()
 
 def split_train_test(data, test_ratio):
     shuffled_indices = np.random.permutation(len(data))
@@ -68,7 +72,7 @@ def CalculateAccuracy(testdata, labels, model):
     else:
         return np.sqrt(mse)
 
-    
+
 from sklearn.model_selection import cross_val_score
 def cross_validate(model, prepared, labels):
     scores = cross_val_score(model, prepared, labels,
