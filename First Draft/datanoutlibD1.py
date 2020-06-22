@@ -11,11 +11,7 @@ DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml2/master/"
 HOUSING_PATH = os.path.join("datasets", "housing")
 HOUSING_URL = DOWNLOAD_ROOT + "datasets/housing/housing.tgz"
 
-def dk_clean_up(data):
-    data.drop("Address", axis = 1)
-    data.drop("Zip_code", axis = 1)
-    data.drop("Municipality", axis = 1)
-    data.
+
 
 def fetch_housing_data():
     os.makedirs(HOUSING_PATH, exist_ok=True)
