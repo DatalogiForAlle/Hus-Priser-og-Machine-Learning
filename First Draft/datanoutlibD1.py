@@ -22,11 +22,15 @@ def fetch_housing_data():
     housing_tgz.close()
 
 
+def prepare_data(data):
+    data = data.drop("ocean_proximity", axis = 1)
+    data = data.fillna(data.median()) # bruger ikke imputer da det ville resultere i at pandas dataframen bliver til et numpy array
+    return data
+
 def load_housing_data():
     csv_path = os.path.join(HOUSING_PATH, "housing.csv")
     housing = pd.read_csv(csv_path)
-    housing = housing.drop("ocean_proximity", axis = 1)
-    return housing
+    return prepare_data(housing)
 
 def download_housing_data():
     fetch_housing_data()
@@ -46,6 +50,8 @@ def split_train_test_by_id(data, test_ratio, id_column):
     ids = data[id_column]
     in_test_set = ids.apply(lambda id_: test_set_check(id_, test_ratio))
     return data.loc[~in_test_set], data.loc[in_test_set]
+
+       
 
 
 rooms_ix, bedrooms_ix, population_ix, households_ix = 3, 4, 5, 6
