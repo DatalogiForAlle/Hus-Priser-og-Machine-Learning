@@ -75,12 +75,8 @@ class CombinedAttributesAdder(BaseEstimator, TransformerMixin):
 from sklearn.metrics import mean_squared_error
 def CalculateAccuracy(testdata, labels, model):
     predictions = model.predict(testdata)
-    print(predictions)
     mse = mean_squared_error(labels, predictions)
-    if mse == 0:
-        return 0
-    else:
-        return np.sqrt(mse)
+    return mse
 
 
 from sklearn.model_selection import cross_val_score
