@@ -1,2 +1,5 @@
 jupyter
 nbstripout
+matplotlib
+scikit-learn
+pandas
