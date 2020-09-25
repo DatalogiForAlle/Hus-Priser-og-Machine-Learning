@@ -2,7 +2,7 @@
 Dette projekt indeholder kode som bruges til at 
 
 # Kør med Binder
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/DatalogiForAlle/Hus-Priser-og-Machine-Learning/binder?filepath=housing.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/DatalogiForAlle/Hus-Priser-og-Machine-Learning/master?filepath=housing.ipynb)
 
 # Development
 
